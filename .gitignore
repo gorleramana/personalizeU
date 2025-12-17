@@ -11,7 +11,6 @@ HISTORY.txt
 README.txt
 share-web/bin/
 share-web/target/
-share-client/node/*
 node_modules/
 target/
 .angular/
@@ -36,4 +35,54 @@ build/
 out/
 *.tmp
 *.temp
-*.md
+**/target/
+*.lst
+**/node_modules/
+node_modules/
+share-client/node_modules/
+share-client/node/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Maven build files
+**/target/**
+*.original
+
+# Angular build files
+**/.angular/**
+**/dist/**
+share-client/.angular/
+share-client/dist/
+
+# Node files
+share-client/node/**
+share-client/node/
+**/node/**
+**/node/
+node/
+share-client/node/*.exe
+share-client/node/npm
+share-client/node/npx
+share-client/node/npm.cmd
+share-client/node/npx.cmd
+
+# IDE files
+**/.settings/**
+**/.settings/
+.settings/
+**/.classpath
+.classpath
+**/.project
+.project
+**/.factorypath
+.factorypath
+share-web/.classpath
+share-web/.factorypath
+share-web/.settings/
+
+# Compiled files
+**/*.class
+share-web/**/*.jar
+share-web/**/*.war
