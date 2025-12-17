@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.rg.practice.systemdesign;
+package com.rg.ds.systemdesign;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;

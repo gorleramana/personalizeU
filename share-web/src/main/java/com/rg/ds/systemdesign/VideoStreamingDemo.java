@@ -1,0 +1,19 @@
+/**
+ * 
+ */
+package com.rg.ds.systemdesign;
+
+/**
+ * 
+ */
+public class VideoStreamingDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

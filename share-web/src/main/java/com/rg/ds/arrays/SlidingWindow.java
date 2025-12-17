@@ -1,7 +1,7 @@
 /**
  * Sliding window programs
  */
-package com.rg.practice.arrays;
+package com.rg.ds.arrays;
 
 import java.util.ArrayList;
 import java.util.Arrays;

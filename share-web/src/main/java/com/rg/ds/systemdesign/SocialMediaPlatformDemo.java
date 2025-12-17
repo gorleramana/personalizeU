@@ -1,7 +1,7 @@
 /**
  * Social media system
  */
-package com.rg.practice.systemdesign;
+package com.rg.ds.systemdesign;
 
 import java.util.ArrayList;
 import java.util.List;
