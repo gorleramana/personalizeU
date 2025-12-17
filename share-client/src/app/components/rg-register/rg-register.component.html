@@ -1,4 +1,5 @@
- <h2 style="text-align: center;">Register User</h2>
+<button type="button" class="cancelbtn" (click)="goBack()" style="float: left; margin: 10px;">← Back</button>
+<h2 style="text-align: center;">Register User</h2>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="container">
         <input formControlName="email" type="email" placeholder="Enter Email" name="email" required>

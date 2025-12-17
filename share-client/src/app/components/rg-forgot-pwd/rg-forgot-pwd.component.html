@@ -1,1 +1,11 @@
-<p>rg-forgot-pwd works!</p>
+<button type="button" class="cancelbtn" (click)="goBack()" style="float: left; margin: 10px;">← Back</button>
+<h2 style="text-align: center;">Reset Password</h2>
+<form [formGroup]="forgotPasswordForm" (ngSubmit)="onSubmit()" style="border: 3px solid #f1f1f1;">
+    <div class="container">
+        <input formControlName="email" type="email" placeholder="Enter Email" name="email" required>
+        <div *ngIf="forgotPasswordForm.get('email')?.invalid && forgotPasswordForm.get('email')?.touched">
+            Valid email is required.
+        </div>
+        <button type="submit" [disabled]="forgotPasswordForm.invalid">Reset Password</button>
+    </div>
+</form>
