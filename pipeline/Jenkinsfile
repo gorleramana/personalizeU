@@ -1,0 +1,68 @@
+pipeline {
+    agent any
+    
+    tools {
+        maven 'Maven-3.9'
+        nodejs 'NodeJS-18'
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Build Backend') {
+            steps {
+                dir('share-web') {
+                    bat 'mvn clean compile'
+                }
+            }
+        }
+        
+        stage('Test Backend') {
+            steps {
+                dir('share-web') {
+                    bat 'mvn test'
+                }
+            }
+        }
+        
+        stage('Build Frontend') {
+            steps {
+                dir('share-client') {
+                    bat 'npm install'
+                    bat 'npm run build'
+                }
+            }
+        }
+        
+        stage('Package') {
+            steps {
+                dir('share-web') {
+                    bat 'mvn package -DskipTests'
+                }
+            }
+        }
+        
+        stage('Archive Artifacts') {
+            steps {
+                archiveArtifacts artifacts: 'share-web/target/*.war', fingerprint: true
+                archiveArtifacts artifacts: 'share-client/dist/**/*', fingerprint: true
+            }
+        }
+    }
+    
+    post {
+        always {
+            cleanWs()
+        }
+        success {
+            echo 'Build completed successfully!'
+        }
+        failure {
+            echo 'Build failed!'
+        }
+    }
+}

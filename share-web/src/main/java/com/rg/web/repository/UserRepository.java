@@ -3,9 +3,24 @@
  */
 package com.rg.web.repository;
 
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.rg.web.entity.User;
+
 /**
  * @author gorle
  */
-public interface UserRepository {
-	String validateLogin(String username, String password, String remember);
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+	
+	Optional<User> findByUsername(String username);
+	
+	Optional<User> findByEmail(String email);
+	
+	boolean existsByUsername(String username);
+	
+	boolean existsByEmail(String email);
 }

@@ -1,0 +1,27 @@
+# Global code owners
+* @admin @maintainer
+
+# Backend (Spring Boot)
+share-web/ @backend-team @java-developers
+
+# Frontend (Angular)
+share-client/ @frontend-team @angular-developers
+
+# Configuration files
+*.yml @devops-team
+*.yaml @devops-team
+*.json @devops-team
+Dockerfile @devops-team
+docker-compose.yml @devops-team
+
+# CI/CD Pipeline
+pipeline/ @devops-team
+.github/ @devops-team
+
+# Documentation
+*.md @documentation-team
+docs/ @documentation-team
+
+# Security sensitive files
+*.properties @security-team
+*.env @security-team
