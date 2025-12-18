@@ -26,4 +26,8 @@ export class RgRegisterComponent {
      this.router.navigate(['/']);
     }
   }
+
+  goBack() {
+    window.history.back();
+  }
 }

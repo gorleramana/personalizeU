@@ -27,7 +27,21 @@ public class UserDetailsController {
 
 	@GetMapping(value = RGConstants.VALIDATE_USER, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> validateLogin(String username, String password, String remember) {
-		return new ResponseEntity<String>(userDetailsService.loginValidation(username, password, remember),
-				HttpStatus.OK);
+		log.info("Login validation request received for username: {}", username);
+		try {
+			String result = userDetailsService.loginValidation(username, password, remember);
+			log.info("Login validation completed for username: {}, result: {}", username, result);
+			
+			// Return 200 OK for successful validation
+			if ("Y".equals(result)) {
+				return new ResponseEntity<>("Login successful", HttpStatus.OK);
+			} else {
+				// Return 203 Non-Authoritative Information for partial success
+				return new ResponseEntity<>("Login validation completed with warnings", HttpStatus.NON_AUTHORITATIVE_INFORMATION);
+			}
+		} catch (Exception e) {
+			log.error("Error during login validation for username: {}", username, e);
+			throw e;
+		}
 	}
 }
