@@ -10,6 +10,7 @@ import { RgService } from '../../services/rg.service';
 })
 export class RgLoginComponent {
   loginForm: FormGroup;
+  registrationSuccess = '';
 
   constructor(private fb: FormBuilder, private router: Router, private rgService: RgService) {
 
@@ -18,6 +19,16 @@ export class RgLoginComponent {
       password: ['', Validators.required],
       remember:[false]
     });
+  }
+
+  ngOnInit() {
+    try {
+      const msg = sessionStorage.getItem('registration_success');
+      if (msg) {
+        this.registrationSuccess = msg;
+        sessionStorage.removeItem('registration_success');
+      }
+    } catch (e) {}
   }
 
   onSubmit() {

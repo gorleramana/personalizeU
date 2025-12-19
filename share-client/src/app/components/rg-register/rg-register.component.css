@@ -1,33 +1,4 @@
-form {border: 3px solid #f1f1f1;}
-
-input[type=text], input[type=password], [type=email]{
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-
-button:hover {
-  opacity: 0.8;
-}
-
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #5236f4;
-}
+/* Shared styles moved to global styles.css */
 
 .imgcontainer {
   text-align: center;
@@ -40,7 +11,7 @@ img.avatar {
 }
 
 .container {
-  padding: 16px;
+  /* padding provided globally */
 }
 
 span.psw {
@@ -59,14 +30,4 @@ span.psw {
   }
 }
 
-.link-button {
-    background: none!important;
-    border: none;
-    padding: 0!important;
-    /*optional*/
-    font-family: arial, sans-serif;
-    /*input has OS specific font-family*/
-    color: #069;
-    text-decoration: underline;
-    cursor: pointer;
-  }
+/* link-button, inputGroup, error, success are provided globally */
