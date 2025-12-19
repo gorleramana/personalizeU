@@ -12,6 +12,11 @@ const routes: Routes = [
     title: 'Login page',
   },
   {
+    path: 'login',
+    component: RgLoginComponent,
+    title: 'Login page',
+  },
+  {
     path: 'home',
     component: RgHomeComponent,
     title: 'Home page',

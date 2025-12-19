@@ -2,3 +2,69 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Shared component styles consolidated here */
+form { border: 3px solid #f1f1f1; }
+
+input[type=text], input[type=password], input[type=email], textarea, .inputGroup {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+button {
+	background-color: #04AA6D;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+}
+
+button:hover { opacity: 0.8; }
+
+.cancelbtn {
+	width: auto;
+	padding: 10px 18px;
+	background-color: #5236f4;
+	color: white;
+}
+
+.container { padding: 16px; }
+
+.link-button {
+	background: none !important;
+	border: none;
+	padding: 0 !important;
+	font-family: arial, sans-serif;
+	color: #069;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.error {
+	color: #c00;
+	font-size: 0.95em;
+	margin-top: 4px;
+}
+
+.success {
+	color: #0a8a0a;
+	background: #e6f7e6;
+	padding: 8px 12px;
+	border-radius: 4px;
+}
+
+/* Utility for input groups used in some templates */
+.inputGroup { box-sizing: border-box; }
+
+/* Focus state for form controls: sky blue border */
+input:focus, textarea:focus, select:focus, .inputGroup:focus {
+	outline: none;
+	border-color: #87CEEB; /* skyblue */
+	box-shadow: 0 0 0 3px rgba(135,206,235,0.15);
+}

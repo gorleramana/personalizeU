@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rg.web.dto.UserRegistrationRequest;
+import com.rg.web.dto.UserRegistrationResponse;
 import com.rg.web.entity.User;
 import com.rg.web.exception.ConflictException;
 import com.rg.web.exception.ServiceUnavailableException;
@@ -36,7 +37,7 @@ public class UserController {
     }
     
     @PostMapping(value = "/users/register", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> registerUser(@Valid @RequestBody UserRegistrationRequest request) {
+    public ResponseEntity<UserRegistrationResponse> registerUser(@Valid @RequestBody UserRegistrationRequest request) {
         log.info("User registration/update request received for username: {}", request.getUsername());
         
         try {
@@ -45,10 +46,12 @@ public class UserController {
             
             if (isUpdate) {
                 log.info("User updated successfully with ID: {}", user.getId());
-                return new ResponseEntity<>("User updated successfully", HttpStatus.OK);
+                UserRegistrationResponse resp = new UserRegistrationResponse("User updated successfully", user.getId(), true);
+                return new ResponseEntity<>(resp, HttpStatus.OK);
             } else {
                 log.info("User created successfully with ID: {}", user.getId());
-                return new ResponseEntity<>("User created successfully", HttpStatus.CREATED);
+                UserRegistrationResponse resp = new UserRegistrationResponse("User created successfully", user.getId(), false);
+                return new ResponseEntity<>(resp, HttpStatus.CREATED);
             }
         } catch (Exception e) {
             log.error("Error during user registration/update for username: {}", request.getUsername(), e);

@@ -1,4 +1,5 @@
 <h2 style="text-align: center;">User Login</h2>
+<div *ngIf="registrationSuccess" class="success" style="text-align:center;margin-bottom:8px;">{{ registrationSuccess }}</div>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <!-- <div class="imgcontainer">
         <img src="baby.jpg" alt="Avatar" class="avatar">
@@ -6,15 +7,15 @@
 
     <div class="container">
         <label><b>Username</b></label>
-        <input  formControlName="username" type="text" placeholder="Enter Username" name="uname" required/>
-        <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
-            Valid username is required.
+        <input  formControlName="username" type="text" placeholder="*Enter Username" name="uname" required/>
+        <div class="error" *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+          Valid username is required.
         </div> 
 
         <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" formControlName="password" type="password" required/>
-        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-            Password is required.
+        <input type="password" placeholder="*Enter Password" formControlName="password" type="password" required/>
+        <div class="error" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+          Password is required.
         </div>
             
         <button type="submit" [disabled]="loginForm.invalid">Login</button>
