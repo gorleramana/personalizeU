@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "share-expenses": {
+    "personalize-u": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/share-expenses",
+            "outputPath": "dist/personalize-u",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -75,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "share-expenses:build:production"
+              "buildTarget": "personalize-u:build:production"
             },
             "development": {
-              "buildTarget": "share-expenses:build:development"
+              "buildTarget": "personalize-u:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -5,14 +5,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.rg</groupId>
-		<artifactId>share-expenses-app</artifactId>
+		<artifactId>personalize-u</artifactId>
 		<version>1.0.0</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>share-client</artifactId>
 	<packaging>jar</packaging>
 	<name>share-client</name>
-	<description>Frontend client for share expenses application</description>
+	<description>Frontend client for PersonalizeU application</description>
 	<properties>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>

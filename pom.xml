@@ -10,11 +10,11 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.rg</groupId>
-	<artifactId>share-expenses-app</artifactId>
+	<artifactId>personalize-u</artifactId>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
-	<name>share-expenses-app</name>
-	<description>This project is for sharing expenses</description>
+	<name>personalize-u</name>
+	<description>PersonalizeU multi-module project (backend + frontend)</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
