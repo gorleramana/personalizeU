@@ -103,6 +103,14 @@
   color: #1976d2;
 }
 
+::ng-deep .mat-mdc-menu-item {
+  color: #1976d2 !important;
+}
+
+::ng-deep .mat-mdc-menu-item:hover {
+  background-color: rgba(25, 118, 210, 0.1);
+}
+
 .logout-btn {
   background-color: transparent;
   border: 1px solid white;

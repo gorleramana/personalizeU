@@ -42,7 +42,9 @@
       <span class="separator">|</span>
       <a href="#">Terms of Service</a>
       <span class="separator">|</span>
-      <a href="#">Contact Us</a>
+      <a href="#" (click)="openChat(); $event.preventDefault()">Contact Us</a>
     </div>
   </div>
 </footer>
+
+<app-chat-window *ngIf="showChat" (close)="closeChat()"></app-chat-window>

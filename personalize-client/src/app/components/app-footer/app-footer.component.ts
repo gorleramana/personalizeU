@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppFooterComponent {
   currentYear = new Date().getFullYear();
+  showChat = false;
+
+  openChat(): void {
+    this.showChat = true;
+  }
+
+  closeChat(): void {
+    this.showChat = false;
+  }
 }

@@ -34,7 +34,7 @@ public class SecurityConfiguration {
          .cors().and()
          .authorizeHttpRequests(auth -> auth
              .requestMatchers("/health", "/actuator/**", "/users/register", "/users/validate",
-                 "/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
+                 "/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html", "/api/chat/**").permitAll()
              .anyRequest().authenticated()
          )
          .httpBasic(httpBasic -> {});
