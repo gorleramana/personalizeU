@@ -33,7 +33,8 @@ public class SecurityConfiguration {
          .csrf(csrf -> csrf.disable())
          .cors().and()
          .authorizeHttpRequests(auth -> auth
-             .requestMatchers("/health", "/actuator/**", "/users/register", "/users/validate").permitAll()
+             .requestMatchers("/health", "/actuator/**", "/users/register", "/users/validate",
+                 "/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
              .anyRequest().authenticated()
          )
          .httpBasic(httpBasic -> {});
