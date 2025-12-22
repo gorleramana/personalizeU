@@ -5,7 +5,8 @@
 share-web/ @backend-team @java-developers
 
 # Frontend (Angular)
-share-client/ @frontend-team @angular-developers
+personalize-client/ @frontend-team @angular-developers
+personalize-web/ @backend-team @spring-developers
 
 # Configuration files
 *.yml @devops-team

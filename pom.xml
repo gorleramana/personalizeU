@@ -19,7 +19,7 @@
 		<java.version>17</java.version>
 	</properties>
 	<modules>
-		<module>share-web</module>
-		<module>share-client</module>
+		<module>personalize-web</module>
+		<module>personalize-client</module>
 	</modules>
 </project>

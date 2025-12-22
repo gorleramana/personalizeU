@@ -15,7 +15,7 @@ pipeline {
         
         stage('Build Backend') {
             steps {
-                dir('share-web') {
+                dir('personalize-web') {
                     bat 'mvn clean compile'
                 }
             }
@@ -23,7 +23,7 @@ pipeline {
         
         stage('Test Backend') {
             steps {
-                dir('share-web') {
+                dir('personalize-web') {
                     bat 'mvn test'
                 }
             }
@@ -31,7 +31,7 @@ pipeline {
         
         stage('Build Frontend') {
             steps {
-                dir('share-client') {
+                dir('personalize-client') {
                     bat 'npm install'
                     bat 'npm run build'
                 }
@@ -40,7 +40,7 @@ pipeline {
         
         stage('Package') {
             steps {
-                dir('share-web') {
+                dir('personalize-web') {
                     bat 'mvn package -DskipTests'
                 }
             }
@@ -48,8 +48,8 @@ pipeline {
         
         stage('Archive Artifacts') {
             steps {
-                archiveArtifacts artifacts: 'share-web/target/*.war', fingerprint: true
-                archiveArtifacts artifacts: 'share-client/dist/**/*', fingerprint: true
+                archiveArtifacts artifacts: 'personalize-web/target/*.war', fingerprint: true
+                archiveArtifacts artifacts: 'personalize-client/dist/**/*', fingerprint: true
             }
         }
     }

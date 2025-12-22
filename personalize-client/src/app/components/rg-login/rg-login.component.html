@@ -1,0 +1,31 @@
+<h2 style="text-align: center;">User Login</h2>
+<div *ngIf="registrationSuccess" class="success" style="text-align:center;margin-bottom:8px;">{{ registrationSuccess }}</div>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <!-- <div class="imgcontainer">
+        <img src="baby.jpg" alt="Avatar" class="avatar">
+      </div> -->
+
+    <div class="container">
+        <label><b>Username</b></label>
+        <input  formControlName="username" type="text" placeholder="*Enter Username" name="uname" required/>
+        <div class="error" *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+          Valid username is required.
+        </div> 
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="*Enter Password" formControlName="password" type="password" required/>
+        <div class="error" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+          Password is required.
+        </div>
+            
+        <button type="submit" [disabled]="isSubmitting">{{ isSubmitting ? 'Logging in...' : 'Login' }}</button>
+        <label>
+          <input type="checkbox" formControlName="remember" name="remember"> Remember me
+        </label>
+      </div>
+
+    <div class="container" style="background-color:#f1f1f1;display: flex;">
+        <button type="button" class="cancelbtn" (click)="registerUser()">Register</button>
+        <button type="button"  class="link-button" style="text-align: right;" (click)="forgotPassword()">Fogot Password?</button>
+      </div>
+</form>
