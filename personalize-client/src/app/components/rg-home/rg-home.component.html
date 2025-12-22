@@ -1,0 +1,7 @@
+<h2 style="text-align: center;">Unified U</h2>
+<div *ngIf="loginSuccess" class="success" style="text-align:center;margin-bottom:8px;">{{ loginSuccess }}</div>
+
+<div class="container">
+    <input type="text" value="person" [ngModel]="person">
+    <button type="submit" (click)="addPerson(person)">+</button>
+</div>

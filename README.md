@@ -1,25 +1,25 @@
 # personalize_U
-Small demo project that contains an Angular client (`share-client`) and a Spring Boot backend (`share-web`). The work in this repository includes a user registration flow, basic authentication utilities for development, and consolidated client styles.
+Small demo project that contains an Angular client (`personalize-client`) and a Spring Boot backend (`personalize-web`). The work in this repository includes a user registration flow, basic authentication utilities for development, and consolidated client styles.
 
 ## Repositories / Folders
-- `share-client` — Angular application (Reactive Forms, HttpClient, Router).
-- `share-web` — Spring Boot backend (Spring Security, JPA, Mongo/Redis stubs).
+- `personalize-client` — Angular application (Reactive Forms, HttpClient, Router).
+- `personalize-web` — Spring Boot backend (Spring Security, JPA, Mongo/Redis stubs).
 
 ## Quick start
 
 1) Start the backend (Windows PowerShell):
 
 ```powershell
-cd C:\workspace\personalizeU\share-web
+cd C:\workspace\personalizeU\personalize-web
 .\mvnw.cmd spring-boot:run
 ```
 
-The backend runs on port 8085 by default (Tomcat). Ensure Mongo/Postgres configs in `share-web/src/main/resources/application.properties` are set if you need persistence; the project will start without them for local dev in many cases.
+The backend runs on port 8085 by default (Tomcat). Ensure Mongo/Postgres configs in `personalize-web/src/main/resources/application.properties` are set if you need persistence; the project will start without them for local dev in many cases.
 
 2) Build / serve the frontend (PowerShell):
 
 ```powershell
-cd C:\workspace\personalizeU\share-client
+cd C:\workspace\personalizeU\personalize-client
 npm install
 npm run build
 ```
@@ -42,11 +42,11 @@ Open the client at `http://localhost:4200` (default Angular dev server).
 - The frontend stores a short registration success message in `sessionStorage` under the key `registration_success` to show on the login page after redirect.
 
 ## Files of interest
-- Backend: `share-web/src/main/java/com/rg/web/controller/UserController.java` (register endpoint)
-- Backend DTOs: `share-web/src/main/java/com/rg/web/dto/UserRegistrationRequest.java`, `UserRegistrationResponse.java`
-- Frontend service: `share-client/src/app/services/rg.service.ts` (registerUser now expects JSON)
-- Frontend registration component: `share-client/src/app/components/rg-register/rg-register.component.ts`
-- Global styles: `share-client/src/styles.css`
+- Backend: `personalize-web/src/main/java/com/rg/web/controller/UserController.java` (register endpoint)
+- Backend DTOs: `personalize-web/src/main/java/com/rg/web/dto/UserRegistrationRequest.java`, `UserRegistrationResponse.java`
+- Frontend service: `personalize-client/src/app/services/rg.service.ts` (registerUser now expects JSON)
+- Frontend registration component: `personalize-client/src/app/components/rg-register/rg-register.component.ts`
+- Global styles: `personalize-client/src/styles.css`
 
 ## Troubleshooting
 - CORS: the backend config uses explicit `allowedOrigins` when `allowCredentials` is true — do not use `*` with credentials.
