@@ -1,5 +1,5 @@
-<button type="button" class="cancelbtn" (click)="goBack()" style="float: left; margin: 10px;">← Back</button>
-<h2 style="text-align: center;">Register User</h2>
+<button *ngIf="!isProfileMode" type="button" class="cancelbtn" (click)="goBack()" style="float: left; margin: 10px;">← Back</button>
+<!-- <h2 style="text-align: center;">Registeration</h2> -->
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="container">
         <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
@@ -30,6 +30,6 @@
         </div>
     </div>
     <div class="container" style="background-color:#f1f1f1;display: flex;">
-        <button type="submit" [disabled]="isSubmitting">{{ isSubmitting ? 'Registering...' : 'Register' }}</button>
+        <button type="submit" [disabled]="isSubmitting">{{ isSubmitting ? (isProfileMode ? 'Updating...' : 'Registering...') : (isProfileMode ? 'Update Profile' : 'Register') }}</button>
     </div>
 </form>

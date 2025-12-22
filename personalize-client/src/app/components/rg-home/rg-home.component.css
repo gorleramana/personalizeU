@@ -1,0 +1,240 @@
+/* Layout */
+.home-layout {
+	display: flex;
+	gap: 12px;
+}
+
+.left-pane {
+	flex: 0 0 20%;
+	border: 1px solid #ddd;
+	padding: 12px;
+}
+
+.left-pane ul {
+	list-style: none;
+	padding: 0;
+}
+
+.left-pane li {
+	padding: 8px 0;
+	cursor: pointer;
+	color: #1976d2;
+}
+
+.left-pane li:hover {
+	color: #1565c0;
+}
+
+.left-pane li.selected {
+	font-weight: bold;
+	color: #1976d2;
+}
+
+.right-pane {
+	flex: 1 1 80%;
+	padding: 12px;
+	border: 1px solid #ddd;
+	display: flex;
+	flex-direction: column;
+}
+.tiles-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+.add-tile-btn {
+	background: #fff;
+	color: #1976d2;
+	border: 1px solid #ccc;
+	width: 32px;
+	height: 32px;
+	border-radius: 6px;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+	line-height: 1;
+}
+
+.add-tile-btn:hover { background: #f5f5f5; }
+
+.pager button {
+	margin: 0 6px;
+	background: #1976d2;
+	color: #fff;
+	border: none;
+	padding: 4px 8px;
+	border-radius: 4px;
+	font-size: 12px;
+	cursor: pointer;
+}
+.pager span {
+	font-size: 12px;
+	white-space: nowrap;
+}
+
+.pager-bottom {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-top: auto;
+	flex-wrap: nowrap;
+	width: fit-content;
+	margin-left: auto;
+}
+
+.pager button:hover {
+	background: #1565c0;
+}
+
+/* Tiles grid */
+.tiles-grid {
+	display: grid;
+	grid-template-columns: repeat(6, minmax(0, 1fr)); /* 6 columns => ~16.67% each (~15%) */
+	grid-auto-rows: 1fr;
+	gap: 10px;
+}
+
+.tile {
+	position: relative;
+}
+
+.tile-inner {
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	border: 2px dashed #bbb;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	background: #fafafa;
+}
+
+.tile-inner.empty .empty-plus {
+	font-size: 42px;
+	line-height: 1;
+	border: none;
+	background: transparent;
+	color: #1976d2;
+	cursor: pointer;
+	padding: 0;
+}
+
+.tile-inner.empty .empty-plus:hover {
+	color: #1565c0;
+}
+
+.platform-icon {
+	font-size: 42px;
+	font-weight: 700;
+}
+
+.add-tile .tile-inner {
+	border: 2px dashed #bbb;
+}
+
+/* Simple picker */
+.picker {
+	.modal-backdrop {
+		position: fixed;
+		inset: 0;
+		background: rgba(0,0,0,0.3);
+	}
+
+	.modal {
+		position: fixed;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.modal-content {
+		width: 380px;
+		background: #fff;
+		border-radius: 8px;
+		box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+		padding: 16px;
+	}
+
+	.modal-form label {
+		display: block;
+		margin-top: 8px;
+		font-weight: 600;
+	}
+
+	.modal-form input {
+		width: 100%;
+		padding: 6px 8px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+	}
+
+	.modal-actions {
+		display: flex;
+		gap: 8px;
+		justify-content: flex-end;
+		margin-top: 12px;
+	}
+
+	.modal-actions .primary {
+		background: #1976d2;
+		color: #fff;
+		border: none;
+		padding: 6px 12px;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+
+	.modal-actions .secondary {
+		background: #f5f5f5;
+		color: #333;
+		border: 1px solid #ccc;
+		padding: 6px 12px;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+	position: absolute;
+	bottom: 8px;
+	left: 8px;
+	right: 8px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	padding: 8px;
+	background: #ffffff;
+	border: 1px solid #ddd;
+	border-radius: 6px;
+}
+
+.picker button {
+	border: 1px solid #ccc;
+	background: #f6f6f6;
+	border-radius: 4px;
+	padding: 4px 8px;
+	cursor: pointer;
+}
+
+.picker .close {
+	margin-left: auto;
+}
+
+/* Platform-specific coloring */
+.platform-icon[data-platform="facebook"] { color: #1877F2; }
+.platform-icon[data-platform="twitter"] { color: #1DA1F2; }
+.platform-icon[data-platform="instagram"] { color: #E1306C; }
+.platform-icon[data-platform="linkedin"] { color: #0A66C2; }
+
+/* In-progress message styling */
+.in-progress-message {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	color: #666;
+}
+.platform-icon[data-platform="youtube"] { color: #FF0000; }

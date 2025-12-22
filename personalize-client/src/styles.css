@@ -1,7 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%; margin: 0; }
+body { 
+	margin: 0; 
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+	background-color: #f0f0f0;
+}
 
 /* Shared component styles consolidated here */
 form { border: 3px solid #f1f1f1; }
@@ -16,7 +20,7 @@ input[type=text], input[type=password], input[type=email], textarea, .inputGroup
 }
 
 button {
-	background-color: #04AA6D;
+	background-color: #1976d2;
 	color: white;
 	padding: 14px 20px;
 	margin: 8px 0;
@@ -30,7 +34,7 @@ button:hover { opacity: 0.8; }
 .cancelbtn {
 	width: auto;
 	padding: 10px 18px;
-	background-color: #5236f4;
+	background-color: #1976d2;
 	color: white;
 }
 
@@ -67,4 +71,17 @@ input:focus, textarea:focus, select:focus, .inputGroup:focus {
 	outline: none;
 	border-color: #87CEEB; /* skyblue */
 	box-shadow: 0 0 0 3px rgba(135,206,235,0.15);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Force Angular Material dialog to center if overridden */
+.centered-dialog .mdc-dialog__container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.centered-dialog .mat-mdc-dialog-surface {
+	margin: 0; /* remove default margins to allow perfect centering */
 }

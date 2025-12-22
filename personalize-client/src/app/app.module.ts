@@ -10,7 +10,15 @@ import { RgRegisterComponent } from './components/rg-register/rg-register.compon
 import { RgForgotPwdComponent } from './components/rg-forgot-pwd/rg-forgot-pwd.component';
 import { RgLoginComponent } from './components/rg-login/rg-login.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { AddTileDialogComponent } from './components/add-tile-dialog/add-tile-dialog.component';
+import { AppFooterComponent } from './components/app-footer/app-footer.component';
+import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -18,7 +26,10 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     RgHomeComponent,
     RgRegisterComponent,
     RgForgotPwdComponent,
-    RgLoginComponent
+    RgLoginComponent,
+    AddTileDialogComponent,
+    AppFooterComponent,
+    AppHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -26,13 +37,18 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatMenuModule
   ],
   providers: [
     provideClientHydration(),
     provideHttpClient(withFetch())
     ,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

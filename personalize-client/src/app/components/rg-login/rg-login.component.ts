@@ -61,8 +61,11 @@ export class RgLoginComponent {
           console.log('Login successful', res);
           this.successMessage = 'User login successful, welcome home.';
           this.isSubmitting = false;
-          // store message so it can be shown on the login page after redirect
-          try { sessionStorage.setItem('login_success', this.successMessage); } catch (e) {}
+          // store user details for profile update
+          try { 
+            sessionStorage.setItem('login_success', this.successMessage);
+            sessionStorage.setItem('user_details', JSON.stringify(res));
+          } catch (e) {}
           // navigate after brief pause so user sees the message
           setTimeout(() => this.router.navigate(['/home']), 1500);
         },

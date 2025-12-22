@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PersonalizeService } from '../../services/personalize.service';
 import { AuthService } from '../../services/auth.service';
 
@@ -16,8 +16,11 @@ export class RgRegisterComponent {
   isSubmitting = false;
   successMessage = '';
   errorMessage = '';
+  isProfileMode = false;
 
-  constructor(private fb: FormBuilder, private router: Router, private personalizeService: PersonalizeService, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private personalizeService: PersonalizeService, private authService: AuthService) {
+    // Detect if we're in profile update mode
+    this.isProfileMode = this.router.url.includes('/profile');
     this.registerForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
@@ -31,6 +34,29 @@ export class RgRegisterComponent {
     this.minDob = '1950-01-01';
     this.maxDob = new Date().toISOString().slice(0,10);
 
+  }
+
+  ngOnInit() {
+    // If in profile mode, populate form with stored user details
+    if (this.isProfileMode) {
+      try {
+        const userDetailsStr = sessionStorage.getItem('user_details');
+        if (userDetailsStr) {
+          const userDetails = JSON.parse(userDetailsStr);
+          this.registerForm.patchValue({
+            fullName: userDetails.name || '',
+            email: userDetails.email || '',
+            username: userDetails.username || '',
+            password: userDetails.password || '',
+            address: userDetails.address || '',
+            dob: userDetails.dateOfBirth || '',
+            phone: userDetails.phoneNumber || ''
+          });
+        }
+      } catch (e) {
+        console.error('Error loading user details', e);
+      }
+    }
   }
 
   onSubmit() {
@@ -57,12 +83,14 @@ export class RgRegisterComponent {
       this.personalizeService.registerUser(payload).subscribe({
         next: res => {
           console.log('Registration successful', res);
-          this.successMessage = 'User registration successful, please log in to continue.';
+          this.successMessage = this.isProfileMode ? 'Profile updated successfully!' : 'User registration successful, please log in to continue.';
           this.isSubmitting = false;
-          // store message so it can be shown on the login page after redirect
-          try { sessionStorage.setItem('registration_success', this.successMessage); } catch (e) {}
+          // store message so it can be shown on the next page after redirect
+          const storageKey = this.isProfileMode ? 'profile_update_success' : 'registration_success';
+          const redirectPath = this.isProfileMode ? '/home' : '/login';
+          try { sessionStorage.setItem(storageKey, this.successMessage); } catch (e) {}
           // navigate after brief pause so user sees the message
-          setTimeout(() => this.router.navigate(['/login']), 1500);
+          setTimeout(() => this.router.navigate([redirectPath]), 1500);
         },
         error: err => {
           console.error('Registration failed', err);

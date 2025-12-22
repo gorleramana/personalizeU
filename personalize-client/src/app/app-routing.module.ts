@@ -31,6 +31,11 @@ const routes: Routes = [
     component: RgForgotPwdComponent,
     title: 'Forgot Password',
   },
+  {
+    path: 'profile',
+    component: RgRegisterComponent,
+    title: 'Update Profile',
+  },
 ];
 
 @NgModule({
