@@ -54,10 +54,8 @@
   main {
     width: 100%;
     min-height: 100%;
-    /* display: flex; */
-    /* justify-content: center;
-    align-items: center; */
     padding: 1rem;
+    padding-bottom: 96px; /* prevent overlap with fixed footer */
     box-sizing: inherit;
     position: relative;
   }
@@ -67,7 +65,7 @@
   }
 
   .content {
-    display: flex;
+    /* display: flex; */
     justify-content: space-around;
     width: 100%;
     /* max-width: 700px; */
@@ -80,12 +78,6 @@
 
   .content p {
     margin-top: 1.5rem;
-  }
-
-  .divider {
-    width: 1px;
-    background: var(--red-to-pink-to-purple-vertical-gradient);
-    margin-inline: 0.5rem;
   }
 
   .pill-group {

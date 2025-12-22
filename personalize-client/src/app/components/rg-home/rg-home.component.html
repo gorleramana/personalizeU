@@ -1,7 +1,51 @@
-<h2 style="text-align: center;">Unified U</h2>
-<div *ngIf="loginSuccess" class="success" style="text-align:center;margin-bottom:8px;">{{ loginSuccess }}</div>
+<div class="home-layout">
+    <aside class="left-pane">
+        <ul>
+            <li [class.selected]="selectedMenuItem === 'Unified Dashboard'" (click)="selectMenuItem('Unified Dashboard')">Unified Dashboard</li>
+            <li [class.selected]="selectedMenuItem === 'Posts'" (click)="selectMenuItem('Posts')">Posts</li>
+            <li [class.selected]="selectedMenuItem === 'Messages'" (click)="selectMenuItem('Messages')">Messages</li>
+            <li [class.selected]="selectedMenuItem === 'Notifications'" (click)="selectMenuItem('Notifications')">Notifications</li>
+        </ul>
+    </aside>
 
-<div class="container">
-    <input type="text" value="person" [ngModel]="person">
-    <button type="submit" (click)="addPerson(person)">+</button>
+    <section class="right-pane">
+        <div *ngIf="loginSuccess" class="success" style="text-align:center;margin-bottom:8px;">{{ loginSuccess }}</div>
+
+        <!-- Tiles view for Unified Dashboard -->
+        <ng-container *ngIf="selectedMenuItem === 'Unified Dashboard'">
+            <div class="tiles-grid">
+                <!-- Add Tile tile occupying first slot -->
+                <div class="tile add-tile">
+                    <div class="tile-inner empty">
+                        <button class="empty-plus" (click)="openAddDialog()">+</button>
+                    </div>
+                </div>
+                <div class="tile" *ngFor="let tile of pagedTiles">
+                    <!-- Empty tile: show centered plus and allow platform selection -->
+                    <div class="tile-inner" [class.empty]="!tile.platform" (click)="openTileDialog(tile)">
+                        <ng-container *ngIf="!tile.platform; else platformContent">
+                            <button class="empty-plus" (click)="openTileDialog(tile)">+</button>
+                        </ng-container>
+                        <ng-template #platformContent>
+                            <div class="platform-icon" [attr.data-platform]="tile.platform">
+                                {{ platformIcon(tile.platform) }}
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+            <div class="pager pager-bottom">
+                <button (click)="prevPage()" [disabled]="currentPage===1">Prev</button>
+                <span>page {{currentPage}}/{{totalPages}}</span>
+                <button (click)="nextPage()" [disabled]="currentPage===totalPages">Next</button>
+            </div>
+        </ng-container>
+
+        <!-- Progress message for other menu items -->
+        <div *ngIf="selectedMenuItem !== 'Unified Dashboard'" class="in-progress-message">
+            <h3>This is in progress</h3>
+        </div>
+
+        <!-- Popup handled in separate window; no in-window modal markup -->
+    </section>
 </div>

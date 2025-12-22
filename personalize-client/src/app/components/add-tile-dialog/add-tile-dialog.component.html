@@ -1,0 +1,25 @@
+<h3>Add Tile</h3>
+<form [formGroup]="form" (ngSubmit)="submit()" class="modal-form">
+  <mat-form-field appearance="outline" class="full">
+    <mat-label>URL</mat-label>
+    <input matInput type="text" formControlName="url" placeholder="https://example.com" />
+    <mat-error *ngIf="form.get('url')?.invalid && form.get('url')?.touched">URL is required.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full">
+    <mat-label>Username</mat-label>
+    <input matInput type="text" formControlName="username" placeholder="Enter Username" />
+    <mat-error *ngIf="form.get('username')?.invalid && form.get('username')?.touched">Username is required.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" formControlName="password" placeholder="Enter Password" />
+    <mat-error *ngIf="form.get('password')?.invalid && form.get('password')?.touched">Password is required.</mat-error>
+  </mat-form-field>
+
+  <div class="actions">
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+    <button mat-stroked-button type="button" (click)="cancel()">Cancel</button>
+  </div>
+</form>

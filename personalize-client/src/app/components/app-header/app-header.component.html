@@ -1,0 +1,17 @@
+<header class="app-header">
+  <div class="header-content" [class.centered]="!showNavLinks">
+    <div class="logo" (click)="navigateToHome()">
+      <h1>Personalize U</h1>
+    </div>
+    <nav class="nav-links" *ngIf="showNavLinks">
+      <button class="home-btn" (click)="navigateToHome()">Home</button>
+      <button class="avatar-btn" aria-label="Profile" [matMenuTriggerFor]="profileMenu">
+        <img class="avatar-img" src="https://via.placeholder.com/40x40.png?text=U" alt="Profile" />
+      </button>
+    </nav>
+    <mat-menu #profileMenu="matMenu">
+      <button mat-menu-item (click)="updateProfile()">Update Profile</button>
+          <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </div>
+</header>
