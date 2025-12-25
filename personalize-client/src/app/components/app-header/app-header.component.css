@@ -27,6 +27,13 @@
 }
 
 .logo {
+  cursor: default;
+  position: relative;
+  margin-right: auto;
+  flex-shrink: 0;
+}
+
+.logo.clickable {
   cursor: pointer;
   position: absolute;
   left: 50%;
@@ -38,6 +45,7 @@
   font-size: 24px;
   font-weight: 600;
   color: white;
+  white-space: nowrap;
 }
 
 .nav-links {

@@ -1,6 +1,7 @@
 <!-- <h2 style="text-align: center;">Login</h2> -->
 <div *ngIf="registrationSuccess" class="success" style="text-align:center;margin-bottom:8px;">{{ registrationSuccess }}</div>
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<div class="login-page">
+  <form class="login-card" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <!-- <div class="imgcontainer">
         <img src="baby.jpg" alt="Avatar" class="avatar">
       </div> -->
@@ -18,14 +19,15 @@
           Password is required.
         </div>
             
-        <button type="submit" [disabled]="isSubmitting">{{ isSubmitting ? 'Logging in...' : 'Login' }}</button>
+        <button type="submit" class="submit-btn" [disabled]="isSubmitting">{{ isSubmitting ? 'Logging in...' : 'Login' }}</button>
         <label>
-          <input type="checkbox" formControlName="remember" name="remember"> Remember me
+          <input style="margin-top: 1rem;" type="checkbox" formControlName="remember" name="remember"> Remember me
         </label>
       </div>
 
-    <div class="container" style="background-color:#f1f1f1;display: flex;">
-        <button type="button" class="cancelbtn" (click)="registerUser()">Register</button>
-        <button type="button"  class="link-button" style="text-align: right;" (click)="forgotPassword()">Fogot Password?</button>
+    <div class="actions">
+        <button type="button" class="secondary-btn" (click)="registerUser()">Register</button>
+        <button type="button" class="link-button" (click)="forgotPassword()">Fogot Password?</button>
       </div>
-</form>
+  </form>
+</div>

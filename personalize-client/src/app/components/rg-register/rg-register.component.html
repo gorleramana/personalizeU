@@ -1,35 +1,43 @@
-<button *ngIf="!isProfileMode" type="button" class="cancelbtn" (click)="goBack()" style="float: left; margin: 10px;">← Back</button>
-<!-- <h2 style="text-align: center;">Registeration</h2> -->
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <div class="container">
-        <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
-        <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
-        <input formControlName="fullName" type="text" placeholder="*Full Name" name="fullName" required>
-        <div class="error" *ngIf="registerForm.get('fullName')?.invalid && registerForm.get('fullName')?.touched">
-            Full name is required.
+<div class="login-page">
+    <form class="login-card" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="container">
+            <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+            <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+            <input formControlName="fullName" type="text" placeholder="*Full Name" name="fullName" required>
+            <div class="error" *ngIf="registerForm.get('fullName')?.invalid && registerForm.get('fullName')?.touched">
+                Full name is required.
+            </div>
+
+            <input formControlName="email" type="email" placeholder="*Enter Email" name="email" required>
+            <div class="error" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+                Valid email is required.
+            </div>
+
+            <input formControlName="username" type="text" placeholder="*Enter Username" name="uname" required>
+            <div class="error" *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+                Valid username is required (min 3 chars).
+            </div>
+
+            <input type="password" placeholder="*Enter Password" formControlName="password">
+            <div class="error" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+                Password is required.
+            </div>
+
+            <textarea class="inputGroup" placeholder="Enter Address" formControlName="address" type="textarea"></textarea>
+
+            <div>
+                <input class="inputGroup" placeholder="Select DOB" formControlName="dob" type="date" [attr.min]="minDob" [attr.max]="maxDob">
+            </div>
+
+            <div>
+                <input class="inputGroup" placeholder="Enter Phone" formControlName="phone" type="tel">
+            </div>
         </div>
-        <input formControlName="email" type="email" placeholder="*Enter Email" name="email" required>
-        <div class="error" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
-            Valid email is required.
+
+        <div class="actions">
+            <button *ngIf="!isProfileMode" type="button" class="secondary-btn" (click)="goBack()">← Back</button>
+            <button type="submit" [disabled]="isSubmitting">{{ isSubmitting ? (isProfileMode ? 'Updating...' : 'Registering...') : (isProfileMode ? 'Update Profile' : 'Register') }}</button>
         </div>
-        <input formControlName="username" type="text" placeholder="*Enter Username" name="uname" required>
-        <div class="error" *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
-            Valid username is required (min 3 chars).
-        </div>
-        <input type="password" placeholder="*Enter Password" formControlName="password">
-        <div class="error" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
-            Password is required.
-        </div>
-        <textarea class="inputGroup" placeholder="Enter Address" formControlName="address" type="textarea"></textarea>
-        <div>
-            <input class="inputGroup" placeholder="Select DOB" formControlName="dob" type="date" style="width:100%;"
-                [attr.min]="minDob" [attr.max]="maxDob">
-        </div>
-        <div>
-            <input class="inputGroup" placeholder="Enter Phone" formControlName="phone" type="tel" style="width:100%;">
-        </div>
-    </div>
-    <div class="container" style="background-color:#f1f1f1;display: flex;">
-        <button type="submit" [disabled]="isSubmitting">{{ isSubmitting ? (isProfileMode ? 'Updating...' : 'Registering...') : (isProfileMode ? 'Update Profile' : 'Register') }}</button>
-    </div>
-</form>
+    </form>
+</div>
