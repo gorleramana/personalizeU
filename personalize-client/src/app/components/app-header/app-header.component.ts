@@ -36,6 +36,13 @@ export class AppHeaderComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
+  onLogoClick() {
+    // Only navigate to home if on a logged-in page (not auth routes)
+    if (this.showNavLinks) {
+      this.navigateToHome();
+    }
+  }
+
   updateProfile() {
     this.router.navigate(['/profile']);
   }

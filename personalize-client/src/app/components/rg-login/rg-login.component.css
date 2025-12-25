@@ -30,3 +30,71 @@ span.psw {
 }
 
 /* link-button, success, error are provided globally */
+
+/* Center the login form horizontally and vertically within the viewport content area */
+.login-page {
+  min-height: calc(100vh - 160px); /* account for header/footer approx */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 480px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* Center inputs and buttons by overriding global widths for this page */
+.login-card input[type=text],
+.login-card input[type=password],
+.login-card input[type=email],
+.login-card textarea,
+.login-card .inputGroup {
+  width: 100%;
+}
+
+.login-card button {
+  width: 100%;
+}
+
+.login-card .submit-btn {
+  max-width: 15rem;
+  margin: 2rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Actions row under the form */
+.login-card .actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+}
+
+.login-card .actions button {
+  width: auto; /* override full-width inside actions */
+}
+
+/* Secondary button style for 'Register' */
+.secondary-btn {
+  background-color: transparent;
+  color: #1976d2;
+  border: 1px solid #1976d2;
+  padding: 10px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.secondary-btn:hover {
+  background-color: rgba(25, 118, 210, 0.08);
+}

@@ -20,12 +20,12 @@ import io.swagger.v3.oas.models.servers.Server;
 public class OpenAPIConfiguration {
 	@Bean
 	public OpenAPI defineOpenApi() {
-		Server server = new Server().url("http://localhost:8080").description("Development");
+		Server server = new Server().url("http://localhost:8085").description("Development");
 
 		Contact contact = new Contact().name("Ramana Gorli").email("gorleramana@email.com");
 
-		Info info = new Info().title("Saving Personal Info System API").version("1.0")
-				.description("This API exposes endpoints to save personal information.").contact(contact);
+		Info info = new Info().title("Personalize U API").version("1.0")
+				.description("This API exposes endpoints for the Personalize U application - user management, authentication, and unified dashboard operations.").contact(contact);
 
 		return new OpenAPI().info(info).servers(List.of(server));
 	}

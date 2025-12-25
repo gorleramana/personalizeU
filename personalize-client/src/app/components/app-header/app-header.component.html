@@ -1,6 +1,6 @@
 <header class="app-header">
   <div class="header-content" [class.centered]="!showNavLinks">
-    <div class="logo" (click)="navigateToHome()">
+    <div class="logo" [class.clickable]="showNavLinks" (click)="onLogoClick()">
       <h1>Personalize U</h1>
     </div>
     <nav class="nav-links" *ngIf="showNavLinks">

@@ -17,6 +17,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AddTileDialogComponent } from './components/add-tile-dialog/add-tile-dialog.component';
 import { AppFooterComponent } from './components/app-footer/app-footer.component';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
+import { ChatWindowComponent } from './components/chat-window/chat-window.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
@@ -29,7 +30,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     RgLoginComponent,
     AddTileDialogComponent,
     AppFooterComponent,
-    AppHeaderComponent
+    AppHeaderComponent,
+    ChatWindowComponent
   ],
   imports: [
     BrowserModule,

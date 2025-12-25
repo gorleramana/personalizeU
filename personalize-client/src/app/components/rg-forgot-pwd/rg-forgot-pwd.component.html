@@ -1,26 +1,25 @@
-<button type="button" class="cancelbtn" (click)="goBack()" style="float: left; margin: 10px;">← Back</button>
-<!-- <h2 style="text-align: center;">Reset Password</h2> -->
-<form [formGroup]="forgotPasswordForm" (ngSubmit)="onSubmit()" style="border: 3px solid #f1f1f1;">
-    <div class="container">
-        <input formControlName="email" type="email" placeholder="*Enter Email" name="email" required>
-        <div *ngIf="forgotPasswordForm.get('email')?.invalid && forgotPasswordForm.get('email')?.touched" class="error">
-            Valid email is required.
+<div class="login-page">
+    <form class="login-card" [formGroup]="forgotPasswordForm" (ngSubmit)="onSubmit()">
+        <div class="container">
+            <input formControlName="email" type="email" placeholder="*Enter Email" name="email" required>
+            <div *ngIf="forgotPasswordForm.get('email')?.invalid && forgotPasswordForm.get('email')?.touched" class="error">
+                Valid email is required.
+            </div>
+
+            <input class="inputGroup" formControlName="password" type="password" placeholder="*New Password" required>
+            <div *ngIf="forgotPasswordForm.get('password')?.invalid && forgotPasswordForm.get('password')?.touched" class="error">
+                Password is required (min 6 characters).
+            </div>
+
+            <input class="inputGroup" formControlName="confirmPassword" type="password" placeholder="*Confirm Password" required>
+            <div *ngIf="(forgotPasswordForm.hasError('passwordMismatch') || (forgotPasswordForm.get('confirmPassword')?.invalid && forgotPasswordForm.get('confirmPassword')?.touched))" class="error">
+                Passwords must match.
+            </div>
         </div>
 
-        <input class="inputGroup" formControlName="password" type="password" placeholder="*New Password" required>
-        <div *ngIf="forgotPasswordForm.get('password')?.invalid && forgotPasswordForm.get('password')?.touched"
-            class="error">
-            Password is required (min 6 characters).
+        <div class="actions">
+            <button type="button" class="secondary-btn" (click)="goBack()">← Back</button>
+            <button type="submit" [disabled]="isSubmitting">{{ isSubmitting ? 'Resetting...' : 'Reset Password' }}</button>
         </div>
-
-        <input class="inputGroup" formControlName="confirmPassword" type="password" placeholder="*Confirm Password"
-            required>
-        <div *ngIf="(forgotPasswordForm.hasError('passwordMismatch') || (forgotPasswordForm.get('confirmPassword')?.invalid && forgotPasswordForm.get('confirmPassword')?.touched))"
-            class="error">
-            Passwords must match.
-        </div>
-    </div>
-    <div class="container" style="background-color:#f1f1f1;display: flex;">
-        <button type="submit" [disabled]="isSubmitting">{{ isSubmitting ? 'Resetting...' : 'Reset Password' }}</button>
-    </div>
-</form>
+    </form>
+</div>
